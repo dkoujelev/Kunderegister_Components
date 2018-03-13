@@ -1,11 +1,18 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import App from './App';
+import GroupList from './Components/GroupList';
 import registerServiceWorker from './registerServiceWorker';
-import './index.css';
+import './Style/index.css';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 ReactDOM.render(
-  <App />,
-  document.getElementById('root') as HTMLElement
+    <BrowserRouter>
+        <div>
+        <Switch>
+        <Route exact={true} path="/" component={GroupList} />
+    </Switch>
+</div>
+</BrowserRouter>,
+    document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();
