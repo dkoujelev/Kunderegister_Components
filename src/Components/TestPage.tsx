@@ -1,9 +1,10 @@
 import * as React from 'react';
 import ListItem from './GroupListItem';
+import { default as Achievement, Achs } from './Achievement';
 
-class GroupList extends React.Component {
+class TestPage extends React.Component {
   render() {
-    const data = [
+    const dataListItem = [
       {
         name: 'Møllenberg WARRIORS', leadsTotal: 200, leadsContacted: 146,
         streak: 31, rising: false, sinking: false, contactedByYou: 101, top: true
@@ -18,12 +19,20 @@ class GroupList extends React.Component {
       }
     ];
 
+    const dataAchievements = [
+      { type: Achs.mostCalls, who: {name: 'Kha Nguyen'}, measure: 4 },
+      { type: Achs.mostCallsInGroup, who: {name: 'Dmitry Koujelev'}, measure: 10 }
+    ];
+
     return (
-      <ul>
-        {data.map((item, i) => <ListItem key={i} {...item} />)}
-      </ul>
+      <div>
+        {dataAchievements.map((item, i) => <Achievement key={i} {...item} />)}
+        <ul>
+          {dataListItem.map((item, i) => <ListItem key={i} {...item} />)}
+        </ul>
+      </div>
     );
   }
 }
 
-export default GroupList;
+export default TestPage;
