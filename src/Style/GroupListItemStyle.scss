@@ -44,10 +44,9 @@
     }
     .statusField {
       grid-column: 2/3;
-
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
+      margin-top: auto;
+      margin-bottom: auto;
+      text-align: right;
     }
   }
 }
@@ -79,10 +78,9 @@
 
      .statusField {
        grid-column: 2/3;
-
-       display: flex;
-       justify-content: flex-end;
-       align-items: center;
+       margin-top: auto;
+       margin-bottom: auto;
+       text-align: right;
     }
   }
 }
