@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as moment from 'moment';
 import 'moment/locale/nb';
+import '../Style/AchievementStyle.css';
 
 moment.locale('nb');
 

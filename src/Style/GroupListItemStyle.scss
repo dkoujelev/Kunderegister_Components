@@ -1,3 +1,5 @@
+@import './_colors.scss';
+
 * {
   padding: 0;
   margin: 0;
@@ -16,12 +18,14 @@
     grid-template-columns:  60% 40%;
     grid-gap: 5px;
     grid-auto-rows: minmax(36px, auto);
-    margin: 20px;
+    margin: auto;
+    width: 600px;
+
 
     .groupInfo {
       grid-column: 1/2;
       .groupName {
-        color: #4a4a4a;
+        color: $text-gray;
         font-size: 32px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -29,7 +33,7 @@
       }
 
       .progress {
-        color: #9b9b9b;
+        color: $text-light-gray;
         font-size: 28px;
         padding: 0;
       }
@@ -59,7 +63,7 @@
     .groupInfo {
       grid-column: 1/2;
       .groupName {
-        color: #4a4a4a;
+        color: $text-gray;
         font-size: 16px;
         text-overflow: ellipsis;
         white-space: nowrap;
@@ -67,7 +71,7 @@
       }
 
       .progress {
-        color: #9b9b9b;
+        color: $text-light-gray;
         font-size: 14px;
         padding: 0;
       }
