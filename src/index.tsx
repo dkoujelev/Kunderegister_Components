@@ -6,13 +6,13 @@ import './Style/index.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 ReactDOM.render(
-    <BrowserRouter>
-        <div>
-        <Switch>
-        <Route exact={true} path="/" component={GroupList} />
-    </Switch>
-</div>
-</BrowserRouter>,
-    document.getElementById('root') as HTMLElement
+  <BrowserRouter>
+    <div>
+      <Switch>
+        <Route exact={true} path="/" component={GroupList}/>
+      </Switch>
+    </div>
+  </BrowserRouter>,
+  document.getElementById('root') as HTMLElement
 );
 registerServiceWorker();

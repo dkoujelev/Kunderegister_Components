@@ -63,7 +63,6 @@ class GroupListItem extends React.Component<Props> {
         <div className="statusField">
           <p>{this.getStatus()}</p>
         </div>
-
       </li>
     );
   }
