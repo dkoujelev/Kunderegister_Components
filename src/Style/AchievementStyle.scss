@@ -12,18 +12,43 @@
   height: 100%;
 }
 
-@media screen and (max-width:1000px) and (max-height:1000px) {
+@media screen and (max-width:1000px) {
   .achievementBox {
+    width: 40%;
+    margin: 5%;
     float: left;
 
     .achievementText {
       color: $text-gray;
       font-size: 16px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     .achievementInfo {
-      font-size: 16px;
-      font-weight: bold;
+
+      .achievementName{
+        text-align: left;
+        display: inline-block;
+        max-width: 60%;
+        font-size: 16px;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .info{
+        text-align: left;
+        display: inline-block;
+        font-size: 16px;
+        font-weight: bold;
+        white-space: nowrap;
+        overflow: hidden;
+      }
     }
+
+
   }
 }
