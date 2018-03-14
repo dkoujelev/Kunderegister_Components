@@ -10,7 +10,45 @@
   height: 100%;
 }
 
-@media screen and (max-width:700px){
+@media screen and (min-width:601px){
+  .listItem {
+    display: grid;
+    grid-template-columns:  60% 40%;
+    grid-gap: 5px;
+    grid-auto-rows: minmax(36px, auto);
+    margin: 20px;
+
+    .groupInfo {
+      grid-column: 1/2;
+      .groupName {
+        color: #4a4a4a;
+        font-size: 32px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      .progress {
+        color: #9b9b9b;
+        font-size: 28px;
+        padding: 0;
+      }
+    }
+
+    .statusField p {
+      zoom: 2;
+    }
+    .statusField {
+      grid-column: 2/3;
+
+      display: flex;
+      justify-content: flex-end;
+      align-items: center;
+    }
+  }
+}
+
+@media screen and (max-width:600px){
   .listItem {
     display: grid;
     grid-template-columns:  60% 40%;
