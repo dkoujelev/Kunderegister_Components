@@ -31,8 +31,8 @@ class Achievement extends React.Component<Props> {
         <div className="achievementBox">
           <p className="achievementText">{type}</p>
           <p className="achievementInfo">
-            <p className="achievementName">{who.name}</p> &nbsp;
-              <p className="info">{measure instanceof Date ? moment(measure).format('LT') : measure}</p>
+            <span className="achievementName">{who.name}</span> &nbsp;
+            <span className="info">{measure instanceof Date ? moment(measure).format('LT') : measure}</span>
           </p>
         </div>
       </div>
