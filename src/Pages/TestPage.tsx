@@ -1,6 +1,6 @@
 import * as React from 'react';
-import ListItem from './GroupListItem';
-import { default as Achievement, Achs } from './Achievement';
+import ListItem from '../Components/GroupListItem';
+import { default as Achievement, Achs } from '../Components/Achievement';
 
 class TestPage extends React.Component {
   render() {
@@ -20,8 +20,8 @@ class TestPage extends React.Component {
     ];
 
     const dataAchievements = [
-      { type: Achs.mostCalls, who: {name: 'Kha Nguyen'}, measure: 4 },
-      { type: Achs.mostCallsInGroup, who: {name: 'Dmitry Koujelev'}, measure: 10 }
+      { className: '', type: Achs.mostCalls, who: {name: 'Kha Nguyen'}, measure: 4 },
+      { type: Achs.firstCallOfTheDay, who: {name: 'Dmitry Koujelev'}, measure: new Date('2018-03-06T08:15:00') }
     ];
 
     return (

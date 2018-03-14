@@ -1,8 +1,13 @@
 import * as React from 'react';
+import * as moment from 'moment';
+import 'moment/locale/nb';
+
+moment.locale('nb');
 
 export enum Achs {
-  mostCalls = 'Ringt mest idag',
-  mostCallsInGroup = 'Ringt mest i gruppa'
+  mostCalls = 'Ringt mest idag ☎️',
+  mostCallsInGroup = 'Ringt mest i gruppa ☎️',
+  firstCallOfTheDay = 'Først Ut 🏎'
 }
 
 export interface User {
@@ -13,7 +18,7 @@ export interface Props {
   className?: string;
   type: string;
   who: User;
-  measure: number;
+  measure: number | Date;
 }
 
 class Achievement extends React.Component<Props> {
@@ -24,7 +29,9 @@ class Achievement extends React.Component<Props> {
       <div className={className}>
         <div className="achievementBox">
           <p className="achievementText">{type}</p>
-          <p className="acheivementInfo">{who.name} {measure}</p>
+          <p className="achievementInfo">
+            {who.name} {measure instanceof Date ? moment(measure).format('LT') : measure}
+          </p>
         </div>
       </div>
     );

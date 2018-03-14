@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import TestPage from './Components/TestPage';
+import TestPage from './Pages/TestPage';
 import registerServiceWorker from './registerServiceWorker';
 import './Style/index.css';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
