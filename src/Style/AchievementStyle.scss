@@ -12,13 +12,10 @@
   height: 100%;
 }
 
-.test {
-  float: left;
-}
-
 @media screen and (max-width:1000px) and (max-height:1000px) {
   .achievementBox {
-    
+    float: left;
+
     .achievementText {
       color: $text-gray;
       font-size: 16px;
