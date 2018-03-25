@@ -1,10 +1,11 @@
 import * as React from 'react';
-import ListItem from '../Components/GroupListItem';
-import { default as Achievement, Achs } from '../Components/Achievement';
+// import ListItem from '../Components/GroupListItem';
+// import { default as Achievement, Achs } from '../Components/Achievement';
+import LoginCode from '../Components/LoginCode';
 
 class TestPage extends React.Component {
   render() {
-    const dataListItem = [
+    /*const dataListItem = [
       {
         name: 'Møllenberg WARRIORS', leadsTotal: 200, leadsContacted: 146,
         streak: 31, rising: false, sinking: false, contactedByYou: 101, top: true
@@ -24,13 +25,16 @@ class TestPage extends React.Component {
       { type: Achs.firstCallOfTheDay, who: {name: 'Dmitry Koujelev'},
         measure: new Date('2018-03-06T08:15:00') }
     ];
-
+    */
     return (
       <div>
+        {/*
         {dataAchievements.map((item, i) => <Achievement key={i} {...item} />)}
         <ul style={{clear: 'both'}}>
           {dataListItem.map((item, i) => <ListItem key={i} {...item} />)}
         </ul>
+        */}
+        <LoginCode onFilled={() => { return 0; }} status={'ready'}/>
       </div>
     );
   }
