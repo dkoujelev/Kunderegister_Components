@@ -70,9 +70,9 @@ export default class LoginCode extends React.Component<Props, State> {
                         i = i + 1;
                         if (i === 10) {
                             return (
-                                <div className="centerButton">
+                                <span className="centerButton">
                                     <button key={0} className="numButton" onClick={() => this.onClick(0)}>0</button>
-                                </div>
+                                </span>
                             );
                         }
                         return (
