@@ -7,23 +7,54 @@ interface Props {
     length?: number;
 }
 
-export default class LoginCode extends React.Component<Props> {
+interface State {
+    focus: number;
+    displays: string[];
+}
+
+export default class LoginCode extends React.Component<Props, State> {
     public static defaultProps: Partial<Props> = {
         length: 5
     };
 
     constructor(props: Props) {
         super(props);
+        this.state = {
+            focus: 0,
+            displays: new Array(this.props.length).fill('-')
+        };
     }
 
-    onClick() {
-        return 0;
+    clearInput() {
+        this.setState({focus: 0, displays: new Array(this.props.length).fill('-')});
+    }
+
+    onClick(i: number) {
+        let {displays, focus} = this.state;
+        let {length, onFilled} = this.props;
+
+        if (length && focus < length) {
+            displays[focus] = i.toString();
+            this.setState({displays: displays, focus: focus + 1});
+        }
+
+        if (length && focus === length - 1) {
+            let code: string = '';
+            displays = this.state.displays;
+            for (i = 0; i < displays.length; i++) {
+                code += displays[i];
+            }
+
+            alert(code);
+            onFilled(code);
+            this.clearInput();
+            // this.setState({focus: focus + 1});
+        }
     }
 
     render() {
-        let {length} = this.props;
-        let displays: string[] = new Array(length);
-        displays.fill('-');
+        let {displays} = this.state;
+        let keys = new Array(10).fill(0);
 
         return(
             <div className="loginCode">
@@ -33,18 +64,19 @@ export default class LoginCode extends React.Component<Props> {
                 })}
                 </div>
                 <div className="numPad">
-                    <button className="numButton" onClick={this.onClick}>1</button>
-                    <button className="numButton" onClick={this.onClick}>2</button>
-                    <button className="numButton" onClick={this.onClick}>3</button>
-                    <button className="numButton" onClick={this.onClick}>4</button>
-                    <button className="numButton" onClick={this.onClick}>5</button>
-                    <button className="numButton" onClick={this.onClick}>6</button>
-                    <button className="numButton" onClick={this.onClick}>7</button>
-                    <button className="numButton" onClick={this.onClick}>8</button>
-                    <button className="numButton" onClick={this.onClick}>9</button>
-                    <div className="centerButton">
-                        <button className="numButton" onClick={this.onClick}>0</button>
-                    </div>      
+                {
+                    keys.map((x: number, i: number) => {
+                        i = i + 1;
+                        if (i === 10) {
+                            return (
+                                <div className="centerButton">
+                                    <button key={0} className="numButton" onClick={() => this.onClick(0)}>0</button>
+                                </div>
+                            );
+                        }
+                        return <button key={i} className="numButton" onClick={() => this.onClick(i)}>{i}</button>;
+                    })
+                }    
                 </div>
             </div>
         );
