@@ -60,7 +60,8 @@ export default class LoginCode extends React.Component<Props, State> {
             <div className="loginCode">
                 <div className="display">
                 {displays.map((x: string, i: number) => {
-                    return <div key={i} className="displayNum">{x}</div>;
+                    if (i === 0) { return <div key={i} className={'displayNumHL'}>{x}</div>; }
+                    return <div key={i} className={(displays[i - 1] === '-' ? 'displayNum' : 'displayNumHL')}>{x}</div>;
                 })}
                 </div>
                 <div className="numPad">
@@ -74,7 +75,9 @@ export default class LoginCode extends React.Component<Props, State> {
                                 </div>
                             );
                         }
-                        return <button key={i} className="numButton" onClick={() => this.onClick(i)}>{i}</button>;
+                        return (
+                            <button key={i} className="numButton" onClick={() => this.onClick(i)}>{i}</button>
+                        );
                     })
                 }    
                 </div>
