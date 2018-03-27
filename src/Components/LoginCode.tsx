@@ -8,8 +8,7 @@ interface Props {
 }
 
 interface State {
-    focus: number;
-    displays: string[];
+    update: boolean;
 }
 
 export default class LoginCode extends React.Component<Props, State> {
@@ -17,67 +16,73 @@ export default class LoginCode extends React.Component<Props, State> {
         length: 5
     };
 
+    codeInputRefs: HTMLInputElement[] = new Array<HTMLInputElement>(this.props.length ? this.props.length : 5);
+    displays: string[] = new Array<string>(this.props.length ? this.props.length : 5).fill('');
+
     constructor(props: Props) {
         super(props);
         this.state = {
-            focus: 0,
-            displays: new Array(this.props.length).fill('')
+            update: false
         };
     }
 
-    clearInput() {
-        this.setState({focus: 0, displays: new Array(this.props.length).fill('-')});
+    clear() {
+        for (let i = 0; i < this.codeInputRefs.length; i++) {
+            this.codeInputRefs[i].setAttribute('value', ' ');
+        }
     }
 
     update(i: number) {
-        let {displays, focus} = this.state;
         let {length, onFilled} = this.props;
 
-        if (length && focus < length) {
-            displays[focus] = i.toString();
-            this.setState({displays: displays, focus: focus + 1});
-        }
-
-        if (length && focus === length - 1) {
-            let code: string = '';
-            displays = this.state.displays;
-            for (i = 0; i < displays.length; i++) {
-                code += displays[i];
+        if (length && i < length) {
+            this.displays[i] = this.codeInputRefs[i].value;
+            this.codeInputRefs[i].blur();
+            if (i < length - 1) {
+                this.codeInputRefs[i + 1].focus();
+                this.codeInputRefs[i + 1].setAttribute('class', 'highlight');
+            } else if (length && i === length - 1) {
+                let code: string = '';
+                for (let j = 0; j < this.displays.length; j++) {
+                    code += this.displays[j];
+                }
+    
+                alert(code);
+                this.setState({update: !this.state.update});
+                onFilled(code);
             }
-
-            alert(code);
-            onFilled(code);
-            setTimeout(() => { this.clearInput(); }, 2000);
-            // this.setState({focus: focus + 1});
         }
     }
 
     render() {
-        let {displays, focus} = this.state;
+        this.codeInputRefs = new Array<HTMLInputElement>(this.props.length ? this.props.length : 5);
+        this.displays = new Array<string>(this.props.length ? this.props.length : 5).fill('');
 
         return(
             <div className="loginCode">
                 <div className="display">
-                {displays.map((x: string, i: number) => {
+                {this.displays.map((x: string, i: number) => {
                     if (i === 0) { return (
                             <input
+                                ref={ref => { this.codeInputRefs[i] = (ref ? ref : new HTMLInputElement()); }}
                                 type="tel"
                                 key={i}
                                 className={'highlight'}
+                                autoFocus={true}
                                 maxLength={1}
-                                size={10}
+                                size={1}
                                 onChange={() => this.update(i)}
                             />
                         ); 
                     }
                     return (
                         <input 
+                            ref={ref => { this.codeInputRefs[i] = (ref ? ref : new HTMLInputElement()); }}
                             type="tel" 
                             key={i} 
-                            className={(displays[i - 1] === '-' ? 'input' : 'highlight')}
-                            autoFocus={i === focus}
+                            className={(this.displays[i - 1] === '' ? 'input' : 'highlight')}
                             maxLength={1}
-                            size={10}
+                            size={1}
                             onChange={() => this.update(i)}
                         />
                     );
