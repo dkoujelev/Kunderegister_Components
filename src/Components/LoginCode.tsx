@@ -47,7 +47,7 @@ export default class LoginCode extends React.Component<Props, State> {
 
             alert(code);
             onFilled(code);
-            this.clearInput();
+            setTimeout(() => { this.clearInput(); }, 2000);
             // this.setState({focus: focus + 1});
         }
     }
