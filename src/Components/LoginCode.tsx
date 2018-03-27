@@ -21,7 +21,7 @@ export default class LoginCode extends React.Component<Props, State> {
         super(props);
         this.state = {
             focus: 0,
-            displays: new Array(this.props.length).fill('-')
+            displays: new Array(this.props.length).fill('')
         };
     }
 
@@ -29,7 +29,7 @@ export default class LoginCode extends React.Component<Props, State> {
         this.setState({focus: 0, displays: new Array(this.props.length).fill('-')});
     }
 
-    onClick(i: number) {
+    update(i: number) {
         let {displays, focus} = this.state;
         let {length, onFilled} = this.props;
 
@@ -53,33 +53,35 @@ export default class LoginCode extends React.Component<Props, State> {
     }
 
     render() {
-        let {displays} = this.state;
-        let keys = new Array(10).fill(0);
+        let {displays, focus} = this.state;
 
         return(
             <div className="loginCode">
                 <div className="display">
                 {displays.map((x: string, i: number) => {
-                    if (i === 0) { return <div key={i} className={'displayNumHL'}>{x}</div>; }
-                    return <div key={i} className={(displays[i - 1] === '-' ? 'displayNum' : 'displayNumHL')}>{x}</div>;
+                    if (i === 0) { return (
+                            <input
+                                type="tel"
+                                key={i}
+                                className={'highlight'}
+                                maxLength={1}
+                                size={10}
+                                onChange={() => this.update(i)}
+                            />
+                        ); 
+                    }
+                    return (
+                        <input 
+                            type="tel" 
+                            key={i} 
+                            className={(displays[i - 1] === '-' ? 'input' : 'highlight')}
+                            autoFocus={i === focus}
+                            maxLength={1}
+                            size={10}
+                            onChange={() => this.update(i)}
+                        />
+                    );
                 })}
-                </div>
-                <div className="numPad">
-                {
-                    keys.map((x: number, i: number) => {
-                        i = i + 1;
-                        if (i === 10) {
-                            return (
-                                <span className="centerButton">
-                                    <button key={0} className="numButton" onClick={() => this.onClick(0)}>0</button>
-                                </span>
-                            );
-                        }
-                        return (
-                            <button key={i} className="numButton" onClick={() => this.onClick(i)}>{i}</button>
-                        );
-                    })
-                }    
                 </div>
             </div>
         );
