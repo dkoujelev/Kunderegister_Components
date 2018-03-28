@@ -81,7 +81,6 @@ export default class LoginCode extends React.Component<Props, State> {
                                 autoFocus={true}
                                 maxLength={1}
                                 size={1}
-                                defaultValue={this.displays[i]}
                                 onKeyDown={(event => { this.keyEvent(event, i); })}
                                 onChange={() => this.update(i)}
                             />
@@ -95,7 +94,6 @@ export default class LoginCode extends React.Component<Props, State> {
                             className={(this.displays[i - 1] === '' ? 'input' : 'highlight')}
                             maxLength={1}
                             size={1}
-                            defaultValue={this.displays[i]}
                             onKeyDown={(event => { this.keyEvent(event, i); })}
                             onChange={() => this.update(i)}
                         />
