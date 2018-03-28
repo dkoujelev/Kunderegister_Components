@@ -34,7 +34,7 @@ class TestPage extends React.Component {
           {dataListItem.map((item, i) => <ListItem key={i} {...item} />)}
         </ul>
         */}
-        <LoginCode onFilled={() => { return 0; }} status={'ready'}/>
+        <LoginCode onFilled={(code) => { alert(code); }} status={'ready'}/>
       </div>
     );
   }

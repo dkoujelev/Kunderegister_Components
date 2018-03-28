@@ -26,9 +26,23 @@ export default class LoginCode extends React.Component<Props, State> {
         };
     }
 
+    keyEvent (event: React.KeyboardEvent<HTMLInputElement>, i: number) {
+        let BACKSPACE = 8;
+        if (event.keyCode === BACKSPACE) {
+            event.preventDefault();
+            if (this.displays[i] !== '') {
+                this.displays[i] = '';
+                this.codeInputRefs[i].value = '';
+            } else if (i > 0) {
+                this.codeInputRefs[i].setAttribute('class', 'input');
+                this.codeInputRefs[i - 1].focus();
+            }
+        }
+    }
+
     clear() {
         for (let i = 0; i < this.codeInputRefs.length; i++) {
-            this.codeInputRefs[i].setAttribute('value', ' ');
+            this.codeInputRefs[i].value = '';
         }
     }
 
@@ -47,17 +61,13 @@ export default class LoginCode extends React.Component<Props, State> {
                     code += this.displays[j];
                 }
     
-                alert(code);
-                this.setState({update: !this.state.update});
                 onFilled(code);
+                this.setState({update: !this.state.update});
             }
         }
     }
 
     render() {
-        this.codeInputRefs = new Array<HTMLInputElement>(this.props.length ? this.props.length : 5);
-        this.displays = new Array<string>(this.props.length ? this.props.length : 5).fill('');
-
         return(
             <div className="loginCode">
                 <div className="display">
@@ -71,6 +81,7 @@ export default class LoginCode extends React.Component<Props, State> {
                                 autoFocus={true}
                                 maxLength={1}
                                 size={1}
+                                onKeyDown={(event => { this.keyEvent(event, i); })}
                                 onChange={() => this.update(i)}
                             />
                         ); 
@@ -83,6 +94,7 @@ export default class LoginCode extends React.Component<Props, State> {
                             className={(this.displays[i - 1] === '' ? 'input' : 'highlight')}
                             maxLength={1}
                             size={1}
+                            onKeyDown={(event => { this.keyEvent(event, i); })}
                             onChange={() => this.update(i)}
                         />
                     );
