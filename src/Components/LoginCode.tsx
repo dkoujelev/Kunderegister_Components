@@ -59,10 +59,10 @@ export default class LoginCode extends React.Component<Props, State> {
                 let code: string = '';
                 for (let j = 0; j < this.displays.length; j++) {
                     code += this.displays[j];
+                    this.codeInputRefs[j].value = '';
                 }
-    
+                
                 onFilled(code);
-                this.setState({update: !this.state.update});
             }
         }
     }
@@ -74,13 +74,14 @@ export default class LoginCode extends React.Component<Props, State> {
                 {this.displays.map((x: string, i: number) => {
                     if (i === 0) { return (
                             <input
-                                ref={ref => { this.codeInputRefs[i] = (ref ? ref : new HTMLInputElement()); }}
+                                ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
                                 type="tel"
                                 key={i}
                                 className={'highlight'}
                                 autoFocus={true}
                                 maxLength={1}
                                 size={1}
+                                defaultValue={this.displays[i]}
                                 onKeyDown={(event => { this.keyEvent(event, i); })}
                                 onChange={() => this.update(i)}
                             />
@@ -88,12 +89,13 @@ export default class LoginCode extends React.Component<Props, State> {
                     }
                     return (
                         <input 
-                            ref={ref => { this.codeInputRefs[i] = (ref ? ref : new HTMLInputElement()); }}
+                            ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
                             type="tel" 
                             key={i} 
                             className={(this.displays[i - 1] === '' ? 'input' : 'highlight')}
                             maxLength={1}
                             size={1}
+                            defaultValue={this.displays[i]}
                             onKeyDown={(event => { this.keyEvent(event, i); })}
                             onChange={() => this.update(i)}
                         />
