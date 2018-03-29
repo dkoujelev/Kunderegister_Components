@@ -11,6 +11,12 @@ interface State {
     update: boolean;
 }
 
+export enum Status {
+    fetching = 'Logger inn...',
+    error = 'Noe gikk galt. Kunne ikke logge inn.',
+    ready = ''
+}
+
 export default class LoginCode extends React.Component<Props, State> {
     public static defaultProps: Partial<Props> = {
         length: 5
@@ -74,6 +80,7 @@ export default class LoginCode extends React.Component<Props, State> {
     }
 
     render() {
+        let { status } = this.props;
         return(
             <div className="loginCode">
                 <div className="display">
@@ -105,6 +112,7 @@ export default class LoginCode extends React.Component<Props, State> {
                         />
                     );
                 })}
+                <p className="statusMessage">{status}</p>
                 </div>
             </div>
         );

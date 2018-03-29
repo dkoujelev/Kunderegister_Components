@@ -1,7 +1,7 @@
 import * as React from 'react';
 // import ListItem from '../Components/GroupListItem';
 // import { default as Achievement, Achs } from '../Components/Achievement';
-import LoginCode from '../Components/LoginCode';
+import LoginCode, { Status } from '../Components/LoginCode';
 
 class TestPage extends React.Component {
   render() {
@@ -34,7 +34,7 @@ class TestPage extends React.Component {
           {dataListItem.map((item, i) => <ListItem key={i} {...item} />)}
         </ul>
         */}
-        <LoginCode onFilled={(code) => { alert(code); }} status={'ready'}/>
+        <LoginCode onFilled={(code) => { alert(code); }} status={Status.ready}/>
       </div>
     );
   }
