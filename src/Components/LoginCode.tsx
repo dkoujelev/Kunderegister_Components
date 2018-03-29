@@ -35,15 +35,21 @@ export default class LoginCode extends React.Component<Props, State> {
                 this.codeInputRefs[i].value = '';
             } else if (i > 0) {
                 this.codeInputRefs[i].setAttribute('class', 'input');
+                this.displays[i - 1] = '';
+                this.codeInputRefs[i - 1].value = '';
                 this.codeInputRefs[i - 1].focus();
             }
         }
     }
 
     clear() {
-        for (let i = 0; i < this.codeInputRefs.length; i++) {
+        for (let i = 1; i < this.codeInputRefs.length; i++) {
             this.codeInputRefs[i].value = '';
+            this.codeInputRefs[i].setAttribute('class', 'input');
         }
+
+        this.codeInputRefs[0].value = '';
+        this.codeInputRefs[0].focus();
     }
 
     update(i: number) {
@@ -59,9 +65,9 @@ export default class LoginCode extends React.Component<Props, State> {
                 let code: string = '';
                 for (let j = 0; j < this.displays.length; j++) {
                     code += this.displays[j];
-                    this.codeInputRefs[j].value = '';
                 }
                 
+                this.clear();
                 onFilled(code);
             }
         }
