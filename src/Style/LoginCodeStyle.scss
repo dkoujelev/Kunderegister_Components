@@ -5,44 +5,39 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    background-image: linear-gradient(335deg, #460044, #3c3339);
 
 }
 
 .display {
-
     text-align: center;
     margin: 5%;
-    background-image: linear-gradient(335deg, #460044, #3c3339);
 
-
-    .displayNum {
-        display: inline-block;
-        width: 500px;
-        height: 50px;
-        padding-top: 15px;
-        text-align: center;
-
-
-        font-size: 24px;
-        font-weight: bold;
-    }
     .input {
+        background: linear-gradient(335deg, #460044, #3c3339);
         width: 50px;
-        height: 50px;
+        height: 60px;
         text-align: center;
         font-size: 24px;
         color: white;
         font-weight: bold;
-
+        border-bottom: 3px solid white;
+        border-top: hidden;
+        border-left: hidden;
+        border-right: hidden;
     }
 
     .highlight {
-        background-color: greenyellow;
+        background: linear-gradient(335deg, #460044, #3c3339);
         width: 50px;
-        height: 50px;
+        height: 60px;
         text-align: center;
         font-size: 24px;
         color: white;
         font-weight: bold;
+        border-bottom: 3px solid #e80057;
+        border-top: hidden;
+        border-left: hidden;
+        border-right: hidden;
     }
 }
