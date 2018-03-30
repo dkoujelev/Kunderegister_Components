@@ -84,6 +84,7 @@ export default class LoginCode extends React.Component<Props, State> {
         return(
             <div className="loginCode">
                 <div className="display">
+                <p className="Message">Kode sendt til ditt mobilnummer</p>
                 {this.displays.map((x: string, i: number) => {
                     if (i === 0) { return (
                             <input
