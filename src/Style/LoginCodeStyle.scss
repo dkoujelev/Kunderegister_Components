@@ -43,4 +43,13 @@
         border-left: hidden;
         border-right: hidden;
     }
+    .highlight:focus {
+        color: white;
+        outline: 0;
+    }
+
+    p {
+        margin: 10px;
+        color: white;
+    }
 }
