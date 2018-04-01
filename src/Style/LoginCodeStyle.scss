@@ -28,6 +28,10 @@
         border-left: hidden;
         border-right: hidden;
     }
+    .input:focus {
+        color: white;
+        outline: 0;
+    }
 
     .highlight {
         margin: 5px;

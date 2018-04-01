@@ -36,14 +36,16 @@ export default class LoginCode extends React.Component<Props, State> {
         let BACKSPACE = 8;
         if (event.keyCode === BACKSPACE) {
             event.preventDefault();
-            if (this.displays[i] !== '') {
-                this.displays[i] = '';
-                this.codeInputRefs[i].value = '';
-            } else if (i > 0) {
+            if (i > 0) {
                 this.codeInputRefs[i].setAttribute('class', 'input');
+                this.codeInputRefs[i].disabled = true;
                 this.displays[i - 1] = '';
+                this.codeInputRefs[i - 1].disabled = false;
                 this.codeInputRefs[i - 1].value = '';
                 this.codeInputRefs[i - 1].focus();
+            } else {
+                this.displays[i] = '';
+                this.codeInputRefs[i].value = '';
             }
         }
     }
@@ -56,6 +58,7 @@ export default class LoginCode extends React.Component<Props, State> {
         }
 
         this.codeInputRefs[0].value = '';
+        this.codeInputRefs[0].disabled = false;
         this.codeInputRefs[0].focus();
     }
 
@@ -64,8 +67,9 @@ export default class LoginCode extends React.Component<Props, State> {
 
         if (length && i < length) {
             this.displays[i] = this.codeInputRefs[i].value;
-            this.codeInputRefs[i].blur();
+            this.codeInputRefs[i].disabled = true;
             if (i < length - 1) {
+                this.codeInputRefs[i + 1].disabled = false;
                 this.codeInputRefs[i + 1].focus();
                 this.codeInputRefs[i + 1].setAttribute('class', 'highlight');
             } else if (length && i === length - 1) {
@@ -77,6 +81,12 @@ export default class LoginCode extends React.Component<Props, State> {
                 this.clear();
                 onFilled(code);
             }
+        }
+    }
+
+    componentDidMount() {
+        for (let i = 1; i < this.codeInputRefs.length; i++) {
+            this.codeInputRefs[i].disabled = true;
         }
     }
 
@@ -104,7 +114,7 @@ export default class LoginCode extends React.Component<Props, State> {
                     return (
                         <input 
                             ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
-                            type="tel" 
+                            type="tel"
                             key={i} 
                             className={(this.displays[i - 1] === '' ? 'input' : 'highlight')}
                             maxLength={1}
