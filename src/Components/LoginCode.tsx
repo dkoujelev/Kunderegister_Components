@@ -50,6 +50,7 @@ export default class LoginCode extends React.Component<Props, State> {
 
     clear() {
         for (let i = 1; i < this.codeInputRefs.length; i++) {
+            this.displays[i] = '';
             this.codeInputRefs[i].value = '';
             this.codeInputRefs[i].setAttribute('class', 'input');
         }
