@@ -36,16 +36,18 @@ export default class LoginCode extends React.Component<Props, State> {
         let BACKSPACE = 8;
         if (event.keyCode === BACKSPACE) {
             event.preventDefault();
+            let cir1 = this.codeInputRefs[i];
             if (i > 0) {
-                this.codeInputRefs[i].setAttribute('class', 'input');
-                this.codeInputRefs[i].disabled = true;
+                let cir2 = this.codeInputRefs[i - 1];
+                cir1.setAttribute('class', 'input');
+                cir1.disabled = true;
                 this.displays[i - 1] = '';
-                this.codeInputRefs[i - 1].disabled = false;
-                this.codeInputRefs[i - 1].value = '';
-                this.codeInputRefs[i - 1].focus();
+                cir2.disabled = false;
+                cir2.value = '';
+                cir2.focus();
             } else {
                 this.displays[i] = '';
-                this.codeInputRefs[i].value = '';
+                cir1.value = '';
             }
         }
     }
@@ -57,37 +59,36 @@ export default class LoginCode extends React.Component<Props, State> {
             this.codeInputRefs[i].setAttribute('class', 'input');
         }
 
-        this.codeInputRefs[0].value = '';
-        this.codeInputRefs[0].disabled = false;
-        this.codeInputRefs[0].focus();
+        let cir0 = this.codeInputRefs[0];
+        cir0.value = '';
+        cir0.disabled = false;
+        cir0.focus();
     }
 
     update(i: number) {
         let {length, onFilled} = this.props;
+        let cir1 = this.codeInputRefs[i];
 
-        if (length && i < length) {
-            this.displays[i] = this.codeInputRefs[i].value;
-            this.codeInputRefs[i].disabled = true;
-            if (i < length - 1) {
-                this.codeInputRefs[i + 1].disabled = false;
-                this.codeInputRefs[i + 1].focus();
-                this.codeInputRefs[i + 1].setAttribute('class', 'highlight');
-            } else if (length && i === length - 1) {
-                let code: string = '';
-                for (let j = 0; j < this.displays.length; j++) {
-                    code += this.displays[j];
-                }
-                
-                this.clear();
-                onFilled(code);
+        this.displays[i] = this.codeInputRefs[i].value;
+        cir1.disabled = true;
+        if (length && i < length - 1) {
+            let cir2 = this.codeInputRefs[i + 1];
+            cir2.disabled = false;
+            cir2.focus();
+            cir2.setAttribute('class', 'highlight');
+        } else if (length && i === length - 1) {
+            let code: string = '';
+            for (let j = 0; j < this.displays.length; j++) {
+                code += this.displays[j];
             }
+            
+            this.clear();
+            onFilled(code);
         }
     }
 
     componentDidMount() {
-        for (let i = 1; i < this.codeInputRefs.length; i++) {
-            this.codeInputRefs[i].disabled = true;
-        }
+        this.codeInputRefs[0].focus();
     }
 
     render() {
@@ -102,8 +103,8 @@ export default class LoginCode extends React.Component<Props, State> {
                                 ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
                                 type="tel"
                                 key={i}
-                                className={'highlight'}
                                 autoFocus={true}
+                                className={'highlight'}
                                 maxLength={1}
                                 size={1}
                                 onKeyDown={(event => { this.keyEvent(event, i); })}
@@ -115,7 +116,8 @@ export default class LoginCode extends React.Component<Props, State> {
                         <input 
                             ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
                             type="tel"
-                            key={i} 
+                            key={i}
+                            disabled={true}
                             className={(this.displays[i - 1] === '' ? 'input' : 'highlight')}
                             maxLength={1}
                             size={1}
