@@ -1,7 +1,7 @@
 {
-  "name": "kunderegister_components",
-  "version": "0.1.0",
-  "private": true,
+  "name": "em1",
+  "version": "0.0.1",
+  "main": "export.js",
   "dependencies": {
     "@types/react-router-dom": "^4.2.4",
     "moment": "^2.21.0",

@@ -7,17 +7,13 @@ interface Props {
     length?: number;
 }
 
-interface State {
-    update: boolean;
-}
-
 export enum Status {
     fetching = 'Logger inn...',
     error = 'Noe gikk galt. Kunne ikke logge inn.',
     ready = ''
 }
 
-export default class LoginCode extends React.Component<Props, State> {
+export default class LoginCode extends React.Component<Props> {
     public static defaultProps: Partial<Props> = {
         length: 5
     };
@@ -27,9 +23,6 @@ export default class LoginCode extends React.Component<Props, State> {
 
     constructor(props: Props) {
         super(props);
-        this.state = {
-            update: false
-        };
     }
 
     keyEvent (event: React.KeyboardEvent<HTMLInputElement>, i: number) {
