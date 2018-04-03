@@ -33,6 +33,8 @@
         -webkit-opacity: 1;
         -webkit-text-fill-color: white;
 
+        transition-duration: 0.2s;
+
         &:focus{
             border-bottom: 5px solid #e80057;    
         }
