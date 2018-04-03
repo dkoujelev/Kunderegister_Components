@@ -29,6 +29,9 @@
         border-right: hidden;
         border-radius: 0;
         outline: 0;
+        
+        -webkit-opacity: 1;
+        -webkit-text-fill-color: white;
 
         &:focus{
             border-bottom: 5px solid #e80057;    
