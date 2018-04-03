@@ -29,6 +29,10 @@
         border-right: hidden;
         border-radius: 0;
         outline: 0;
+
+        &:focus{
+            border-bottom: 5px solid #e80057;    
+        }
     }
 
     .input-highlight {

@@ -57,14 +57,14 @@ export default class LoginCode extends React.Component<Props> {
     update(i: number) {
         const {length, onFilled} = this.props;
         let cir1 = this.codeInputRefs[i];
-
+        
         this.displays[i] = this.codeInputRefs[i].value;
         cir1.disabled = true;
+        cir1.setAttribute('class', 'input input-highlight');
         if (length && i < length - 1) {
             let cir2 = this.codeInputRefs[i + 1];
             cir2.disabled = false;
             cir2.focus();
-            cir2.setAttribute('class', 'input input-highlight');
         } else if (length && i === length - 1) {
             let code: string = '';
             for (let j = 0; j < this.displays.length; j++) {
@@ -94,7 +94,7 @@ export default class LoginCode extends React.Component<Props> {
                             key={i}
                             autoFocus={first}
                             disabled={!first}
-                            className={(this.displays[i - 1] === '' ? 'input' : 'input input-highlight')}
+                            className={(this.displays[i] === '' ? 'input' : 'input input-highlight')}
                             maxLength={1}
                             size={1}
                             onKeyDown={(event => { this.keyEvent(event, i); })}
