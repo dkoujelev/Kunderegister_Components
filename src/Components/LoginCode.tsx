@@ -21,6 +21,7 @@ export default class LoginCode extends React.Component<Props> {
     codeInputRefs: HTMLInputElement[] = new Array<HTMLInputElement>(this.props.length ? this.props.length : 5);
     displays: string[] = Array<string>(this.props.length ? this.props.length : 5).fill('');
     index: number = 0;
+    isDesktop = !navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
 
     keyEvent (event: React.KeyboardEvent<HTMLInputElement>, i: number) {
         const BACKSPACE = 8;
@@ -93,7 +94,7 @@ export default class LoginCode extends React.Component<Props> {
                             ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
                             type="tel"
                             key={i}
-                            autoFocus={first}
+                            autoFocus={this.isDesktop && first}
                             className={(this.displays[i] === '' ? 'input' : 'input input-highlight')}
                             maxLength={1}
                             size={1}
