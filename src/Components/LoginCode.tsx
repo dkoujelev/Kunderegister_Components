@@ -20,51 +20,45 @@ export default class LoginCode extends React.Component<Props> {
 
     codeInputRefs: HTMLInputElement[] = new Array<HTMLInputElement>(this.props.length ? this.props.length : 5);
     displays: string[] = Array<string>(this.props.length ? this.props.length : 5).fill('');
+    index: number = 0;
 
     keyEvent (event: React.KeyboardEvent<HTMLInputElement>, i: number) {
         const BACKSPACE = 8;
         if (event.keyCode === BACKSPACE) {
             event.preventDefault();
-            let cir1 = this.codeInputRefs[i];
             if (i > 0) {
-                let cir2 = this.codeInputRefs[i - 1];
-                cir1.setAttribute('class', 'input');
-                cir1.disabled = true;
+                this.codeInputRefs[i].setAttribute('class', 'input');
                 this.displays[i - 1] = '';
-                cir2.disabled = false;
-                cir2.value = '';
-                cir2.focus();
+                this.codeInputRefs[i - 1].value = '';
+                this.index--;
+                this.codeInputRefs[i - 1].focus();
             } else {
                 this.displays[i] = '';
-                cir1.value = '';
+                this.codeInputRefs[i].value = '';
             }
         }
     }
 
     clear() {
-        for (let i = 1; i < this.codeInputRefs.length; i++) {
+        for (let i = 0; i < this.codeInputRefs.length; i++) {
             this.displays[i] = '';
             this.codeInputRefs[i].value = '';
             this.codeInputRefs[i].setAttribute('class', 'input');
         }
 
-        let cir0 = this.codeInputRefs[0];
-        cir0.value = '';
-        cir0.disabled = false;
-        cir0.focus();
+        this.index = 0;
+        this.codeInputRefs[0].focus();
     }
 
     update(i: number) {
         const {length, onFilled} = this.props;
         let cir1 = this.codeInputRefs[i];
-        
         this.displays[i] = this.codeInputRefs[i].value;
-        cir1.disabled = true;
+
         cir1.setAttribute('class', 'input input-highlight');
         if (length && i < length - 1) {
-            let cir2 = this.codeInputRefs[i + 1];
-            cir2.disabled = false;
-            cir2.focus();
+            this.index++;
+            this.codeInputRefs[i + 1].focus();  
         } else if (length && i === length - 1) {
             let code: string = '';
             for (let j = 0; j < this.displays.length; j++) {
@@ -73,6 +67,13 @@ export default class LoginCode extends React.Component<Props> {
             
             this.clear();
             onFilled(code);
+        }
+    }
+
+    onInputFocus(i: number) {
+        if (i !== this.index) {
+            this.codeInputRefs[this.index].focus();
+            this.codeInputRefs[i].blur();            
         }
     }
 
@@ -93,11 +94,11 @@ export default class LoginCode extends React.Component<Props> {
                             type="tel"
                             key={i}
                             autoFocus={first}
-                            disabled={!first}
                             className={(this.displays[i] === '' ? 'input' : 'input input-highlight')}
                             maxLength={1}
                             size={1}
-                            onKeyDown={(event => { this.keyEvent(event, i); })}
+                            onFocus={() => { this.onInputFocus(i); }}
+                            onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => { this.keyEvent(event, i); }}
                             onChange={() => this.update(i)}
                         />
                     );
