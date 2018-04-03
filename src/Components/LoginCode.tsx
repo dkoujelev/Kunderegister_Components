@@ -87,26 +87,15 @@ export default class LoginCode extends React.Component<Props> {
                 <div className="display">
                 <p className="Message">Kode sendt til ditt mobilnummer</p>
                 {this.displays.map((x: string, i: number) => {
-                    if (i === 0) { return (
-                            <input
-                                ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
-                                type="tel"
-                                key={i}
-                                autoFocus={true}
-                                className={'input input-highlight'}
-                                maxLength={1}
-                                size={1}
-                                onKeyDown={(event => { this.keyEvent(event, i); })}
-                                onChange={() => this.update(i)}
-                            />
-                        ); 
-                    }
+                    const first = i === 0;
+
                     return (
                         <input 
                             ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
                             type="tel"
                             key={i}
-                            disabled={true}
+                            autoFocus={first}
+                            disabled={!first}
                             className={(this.displays[i - 1] === '' ? 'input' : 'input input-highlight')}
                             maxLength={1}
                             size={1}
