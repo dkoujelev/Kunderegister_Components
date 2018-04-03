@@ -28,20 +28,11 @@
         border-left: hidden;
         border-right: hidden;
         border-radius: 0;
+        outline: 0;
     }
 
     .input-highlight {
         border-bottom: 5px solid #e80057;
-    }
-
-    .input:focus {
-        color: white;
-        outline: 0;
-    }
-    
-    .highlight:focus {
-        color: white;
-        outline: 0;
     }
 
     p {

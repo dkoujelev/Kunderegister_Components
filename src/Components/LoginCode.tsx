@@ -19,14 +19,10 @@ export default class LoginCode extends React.Component<Props> {
     };
 
     codeInputRefs: HTMLInputElement[] = new Array<HTMLInputElement>(this.props.length ? this.props.length : 5);
-    displays: string[] = new Array<string>(this.props.length ? this.props.length : 5).fill('');
-
-    constructor(props: Props) {
-        super(props);
-    }
+    displays: string[] = Array<string>(this.props.length ? this.props.length : 5).fill('');
 
     keyEvent (event: React.KeyboardEvent<HTMLInputElement>, i: number) {
-        let BACKSPACE = 8;
+        const BACKSPACE = 8;
         if (event.keyCode === BACKSPACE) {
             event.preventDefault();
             let cir1 = this.codeInputRefs[i];
@@ -59,7 +55,7 @@ export default class LoginCode extends React.Component<Props> {
     }
 
     update(i: number) {
-        let {length, onFilled} = this.props;
+        const {length, onFilled} = this.props;
         let cir1 = this.codeInputRefs[i];
 
         this.displays[i] = this.codeInputRefs[i].value;
@@ -81,11 +77,13 @@ export default class LoginCode extends React.Component<Props> {
     }
 
     render() {
-        let { status } = this.props;
+        const { status } = this.props;
+
         return(
             <div className="loginCode">
                 <div className="display">
                 <p className="Message">Kode sendt til ditt mobilnummer</p>
+
                 {this.displays.map((x: string, i: number) => {
                     const first = i === 0;
 
@@ -104,6 +102,7 @@ export default class LoginCode extends React.Component<Props> {
                         />
                     );
                 })}
+                
                 <p className="statusMessage">{status}</p>
                 </div>
             </div>
