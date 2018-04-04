@@ -28,7 +28,7 @@ export default class LoginCode extends React.Component<Props> {
         if (event.keyCode === BACKSPACE) {
             event.preventDefault();
             if (i > 0) {
-                this.codeInputRefs[i].setAttribute('class', 'input');
+                this.codeInputRefs[i - 1].setAttribute('class', 'input');
                 this.displays[i - 1] = '';
                 this.codeInputRefs[i - 1].value = '';
                 this.index--;
