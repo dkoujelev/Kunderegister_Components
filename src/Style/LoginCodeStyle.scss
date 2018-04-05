@@ -1,51 +1,45 @@
+@import 'modifiers';
 
-* {
-    padding: 0;
-    margin: 0;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    background: #460044;
-
-}
-
-.display {
+.login-code {
     text-align: center;
     margin: 5%;
     background: #460044;
 
-    .input {
-        margin: 5px;
-        background: #460044;
-        width: 30px;
-        height: 50px;
-        text-align: center;
-        font-size: 24px;
-        color: white;
-        font-weight: bold;
-        border-bottom: 5px solid white;
-        border-top: hidden;
-        border-left: hidden;
-        border-right: hidden;
-        border-radius: 0;
-        outline: 0;
-        
-        -webkit-opacity: 1;
-        -webkit-text-fill-color: white;
-
-        transition-duration: 0.2s;
-
-        &:focus{
-            border-bottom: 5px solid #e80057;    
-        }
+    @include element('Message') {
+        margin: 10px;
+        color: red;
     }
 
-    .input-highlight {
-        border-bottom: 5px solid #e80057;
-    }
-
-    p {
+    @include element('statusMessage') {
         margin: 10px;
         color: white;
     }
 }
+
+.input {
+    margin: 5px;
+    background: #460044;
+    width: 30px;
+    height: 50px;
+    text-align: center;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+    border-width: 0px 0px 5px 0px;
+    border-color: white;
+    border-radius: 0;
+    outline: 0;
+    -webkit-opacity: 1;
+    -webkit-text-fill-color: white;
+    transition-duration: 0.2s;
+
+    &:focus{
+        border-bottom: 5px solid #e80057;    
+    }
+
+    @include modifier('highlight'){
+        border-bottom: 5px solid #e80057;
+    }
+}
+
+

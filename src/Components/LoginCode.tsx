@@ -56,7 +56,7 @@ export default class LoginCode extends React.Component<Props> {
         let cir1 = this.codeInputRefs[i];
         this.displays[i] = this.codeInputRefs[i].value;
 
-        cir1.setAttribute('class', 'input input-highlight');
+        cir1.setAttribute('class', 'input input--highlight');
         if (length && i < length - 1) {
             this.index++;
             this.codeInputRefs[i + 1].focus();  
@@ -82,20 +82,19 @@ export default class LoginCode extends React.Component<Props> {
         const { status } = this.props;
 
         return(
-            <div className="loginCode">
-                <div className="display">
-                <p className="Message">Kode sendt til ditt mobilnummer</p>
+            <div className="login-code">
+                <p className="login-code__Message">Kode sendt til ditt mobilnummer</p>
 
                 {this.displays.map((x: string, i: number) => {
                     const first = i === 0;
 
                     return (
-                        <input 
+                        <input
                             ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
                             type="tel"
                             key={i}
                             autoFocus={this.isDesktop && first}
-                            className={(this.displays[i] === '' ? 'input' : 'input input-highlight')}
+                            className={(this.displays[i] === '' ? 'input' : 'input input--highlight')}
                             maxLength={1}
                             size={1}
                             onFocus={() => { this.onInputFocus(i); }}
@@ -105,8 +104,8 @@ export default class LoginCode extends React.Component<Props> {
                     );
                 })}
                 
-                <p className="statusMessage">{status}</p>
-                </div>
+                <p className="login-code__statusMessage">{status}</p>
+
             </div>
         );
     }
