@@ -1,13 +1,18 @@
 @import 'modifiers';
+@import './_colors.scss';
+
+body {
+    background-color: $backgroud;
+}
 
 .login-code {
     text-align: center;
     margin: 5%;
-    background: #460044;
+    background: $backgroud;
 
     @include element('Message') {
         margin: 10px;
-        color: red;
+        color: white;
     }
 
     @include element('statusMessage') {
@@ -18,7 +23,7 @@
 
 .input {
     margin: 5px;
-    background: #460044;
+    background: $backgroud;
     width: 30px;
     height: 50px;
     text-align: center;
@@ -34,11 +39,11 @@
     transition-duration: 0.2s;
 
     &:focus{
-        border-bottom: 5px solid #e80057;    
+        border-bottom: 5px solid $login-inputted;    
     }
 
     @include modifier('highlight'){
-        border-bottom: 5px solid #e80057;
-        border-color: #e80057;
+        border-bottom: 5px solid $login-inputted;
+        border-color: $login-inputted;
     }
 }
