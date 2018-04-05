@@ -1,11 +1,11 @@
 @mixin element($name) {
-    &__#{name} {
+    &__#{$name} {
         @content;
     }
 }
 
 @mixin modifier($name) {
-    &--#{name} {
+    &--#{$name} {
         @content;
     }
 }
