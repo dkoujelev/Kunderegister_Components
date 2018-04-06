@@ -23,7 +23,7 @@ export default class LoginCode extends React.Component<Props> {
     index: number = 0;
     isDesktop = !navigator.userAgent.match(/(iPad)|(iPhone)|(iPod)|(android)|(webOS)/i);
 
-    keyEvent (event: React.KeyboardEvent<HTMLInputElement>, i: number) {
+    onBackspaceKeyPress (event: React.KeyboardEvent<HTMLInputElement>, i: number) {
         const BACKSPACE = 8;
         if (event.keyCode === BACKSPACE) {
             event.preventDefault();
@@ -40,7 +40,7 @@ export default class LoginCode extends React.Component<Props> {
         }
     }
 
-    clear() {
+    clearAllInputs() {
         for (let i = 0; i < this.codeInputRefs.length; i++) {
             this.displays[i] = '';
             this.codeInputRefs[i].value = '';
@@ -51,7 +51,7 @@ export default class LoginCode extends React.Component<Props> {
         this.codeInputRefs[0].focus();
     }
 
-    update(i: number) {
+    onInputChange(i: number) {
         const {length, onFilled} = this.props;
         let cir1 = this.codeInputRefs[i];
         this.displays[i] = this.codeInputRefs[i].value;
@@ -66,7 +66,7 @@ export default class LoginCode extends React.Component<Props> {
                 code += this.displays[j];
             }
             
-            this.clear();
+            this.clearAllInputs();
             onFilled(code);
         }
     }
@@ -98,8 +98,8 @@ export default class LoginCode extends React.Component<Props> {
                             maxLength={1}
                             size={1}
                             onFocus={() => { this.onInputFocus(i); }}
-                            onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => { this.keyEvent(event, i); }}
-                            onChange={() => this.update(i)}
+                            onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => { this.onBackspaceKeyPress(event, i); }}
+                            onChange={() => this.onInputChange(i)}
                         />
                     );
                 })}
