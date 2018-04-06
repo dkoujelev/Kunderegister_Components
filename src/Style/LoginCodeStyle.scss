@@ -19,7 +19,7 @@ body {
         margin: 10px;
         color: white;
     }
-
+    
     @include element('input') {
         margin: 5px;
         background: $backgroud;
