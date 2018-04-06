@@ -78,6 +78,10 @@ export default class LoginCode extends React.Component<Props> {
         }
     }
 
+    onInputWrapperClick() {
+        this.codeInputRefs[this.index].focus();        
+    }
+
     render() {
         const { status } = this.props;
 
@@ -85,25 +89,28 @@ export default class LoginCode extends React.Component<Props> {
             <div className="login-code">
                 <p className="login-code__Message">Kode sendt til ditt mobilnummer</p>
 
-                {this.displays.map((x: string, i: number) => {
-                    const first = i === 0;
+                <div className="login-code__input-wrapper" onClick={() => { this.onInputWrapperClick() }}>
+                    {this.displays.map((x: string, i: number) => {
+                        const first = i === 0;
 
-                    return (
-                        <input
-                            ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
-                            type="tel"
-                            key={i}
-                            autoFocus={this.isDesktop && first}
-                            className={(this.displays[i] === '' ? 'input' : 'input input--highlight')}
-                            maxLength={1}
-                            size={1}
-                            onFocus={() => { this.onInputFocus(i); }}
-                            onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => { this.onBackspaceKeyPress(event, i); }}
-                            onChange={() => this.onInputChange(i)}
-                        />
-                    );
-                })}
-                
+                        return (
+                            <input
+                                ref={(ref: HTMLInputElement) => { this.codeInputRefs[i] = ref; }}
+                                type="tel"
+                                key={i}
+                                autoFocus={this.isDesktop && first}
+                                className={(this.displays[i] === '' ? 'input' : 'input input--highlight')}
+                                maxLength={1}
+                                size={1}
+                                onFocus={() => { this.onInputFocus(i); }}
+                                onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
+                                     this.onBackspaceKeyPress(event, i); 
+                                }}
+                                onChange={() => this.onInputChange(i)}
+                            />
+                        );
+                    })}
+                </div>
                 <p className="login-code__statusMessage">{status}</p>
 
             </div>
