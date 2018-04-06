@@ -28,7 +28,7 @@ export default class LoginCode extends React.Component<Props> {
         if (event.keyCode === BACKSPACE) {
             event.preventDefault();
             if (i > 0) {
-                this.codeInputRefs[i - 1].setAttribute('class', 'input');
+                this.codeInputRefs[i - 1].setAttribute('class', 'login-code__input');
                 this.displays[i - 1] = '';
                 this.codeInputRefs[i - 1].value = '';
                 this.index--;
@@ -44,7 +44,7 @@ export default class LoginCode extends React.Component<Props> {
         for (let i = 0; i < this.codeInputRefs.length; i++) {
             this.displays[i] = '';
             this.codeInputRefs[i].value = '';
-            this.codeInputRefs[i].setAttribute('class', 'input');
+            this.codeInputRefs[i].setAttribute('class', 'login-code__input');
         }
 
         this.index = 0;
@@ -56,7 +56,7 @@ export default class LoginCode extends React.Component<Props> {
         let cir1 = this.codeInputRefs[i];
         this.displays[i] = this.codeInputRefs[i].value;
 
-        cir1.setAttribute('class', 'input input--highlight');
+        cir1.setAttribute('class', 'login-code__input login-code__input--highlight');
         if (length && i < length - 1) {
             this.index++;
             this.codeInputRefs[i + 1].focus();  
@@ -99,9 +99,11 @@ export default class LoginCode extends React.Component<Props> {
                                 type="tel"
                                 key={i}
                                 autoFocus={this.isDesktop && first}
-                                className={(this.displays[i] === '' ? 'input' : 'input input--highlight')}
+                                className={
+                                    (this.displays[i] === '' ?
+                                    'login-code__input' : 'login-code__input login-code__input--highlight')
+                                }
                                 maxLength={1}
-                                size={1}
                                 onFocus={() => { this.onInputFocus(i); }}
                                 onKeyDown={(event: React.KeyboardEvent<HTMLInputElement>) => {
                                      this.onBackspaceKeyPress(event, i); 

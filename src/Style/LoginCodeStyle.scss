@@ -19,29 +19,31 @@ body {
         margin: 10px;
         color: white;
     }
+
+    @include element('input') {
+        margin: 5px;
+        background: $backgroud;
+        width: 24px;
+        height: 40px;
+        text-align: center;
+        font-size: 20px;
+        color: white;
+        border-width: 0px 0px 3px 0px;
+        border-color: #eee;
+        border-radius: 0;
+        outline: 0;
+        -webkit-opacity: 1;
+        -webkit-text-fill-color: white;
+        transition-duration: 0.2s;
+    
+        &:focus{
+            border-color: $login-inputted;
+        }
+    
+        @include modifier('highlight'){
+            border-color: $login-inputted;
+        }
+    }
 }
 
-.input {
-    margin: 5px;
-    background: $backgroud;
-    width: 24px;
-    height: 40px;
-    text-align: center;
-    font-size: 20px;
-    color: white;
-    border-width: 0px 0px 3px 0px;
-    border-color: #eee;
-    border-radius: 0;
-    outline: 0;
-    -webkit-opacity: 1;
-    -webkit-text-fill-color: white;
-    transition-duration: 0.2s;
 
-    &:focus{
-        border-color: $login-inputted;
-    }
-
-    @include modifier('highlight'){
-        border-color: $login-inputted;
-    }
-}
