@@ -7,8 +7,8 @@ body {
 
 .login-code {
     text-align: center;
-    margin: 5%;
     background: $backgroud;
+    margin-top: 10%;
 
     @include element('Message') {
         margin: 10px;
@@ -24,14 +24,13 @@ body {
 .input {
     margin: 5px;
     background: $backgroud;
-    width: 30px;
-    height: 50px;
+    width: 24px;
+    height: 40px;
     text-align: center;
-    font-size: 24px;
+    font-size: 20px;
     color: white;
-    font-weight: bold;
-    border-width: 0px 0px 5px 0px;
-    border-color: white;
+    border-width: 0px 0px 3px 0px;
+    border-color: #eee;
     border-radius: 0;
     outline: 0;
     -webkit-opacity: 1;
@@ -39,11 +38,10 @@ body {
     transition-duration: 0.2s;
 
     &:focus{
-        border-bottom: 5px solid $login-inputted;    
+        border-color: $login-inputted;
     }
 
     @include modifier('highlight'){
-        border-bottom: 5px solid $login-inputted;
         border-color: $login-inputted;
     }
 }
