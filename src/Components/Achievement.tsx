@@ -28,11 +28,12 @@ class Achievement extends React.Component<Props> {
 
     return (
       <div className={className}>
-        <div className="achievementBox">
-          <p className="achievementText">{type}</p>
-          <p className="achievementInfo">
-            <span className="achievementName">{who.name}</span> &nbsp;
-            <span className="info">{measure instanceof Date ? moment(measure).format('LT') : measure}</span>
+        <div className="achievement">
+          <p className="achievement__text">{type}</p>
+          <p className="achievement__description">
+            <span className="achievement__description--name">{who.name}</span> &nbsp;
+            <span className="achievement__description--info">
+                {measure instanceof Date ? moment(measure).format('LT') : measure}</span>
           </p>
         </div>
       </div>

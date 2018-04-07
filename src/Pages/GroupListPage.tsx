@@ -20,7 +20,7 @@ export default class GroupListPage extends React.Component {
           ];
 
         return(
-            <ul style={{clear: 'both'}}>
+            <ul className="wholeList" style={{clear: 'both'}}>
                 {dataListItem.map((item, i) => <ListItem key={i} {...item} />)}
             </ul>
         );

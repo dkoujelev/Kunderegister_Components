@@ -55,13 +55,13 @@ class GroupListItem extends React.Component<Props> {
 
   render() {
     return (
-      <li className="listItem">
-        <div className="groupInfo">
-          <p className="groupName">{this.props.name}</p>
-          <p className="progress">{this.getProgress()}% fullført</p>
+      <li className="list">
+        <div className="list__groupInfo">
+          <p className="list__groupInfo--name">{this.props.name}</p>
+          <p className="list__groupInfo--progress">{this.getProgress()}% fullført</p>
         </div>
-        <div className="statusField">
-          <p>{this.getStatus()}</p>
+        <div className="list__statusField">
+          <p className="list__statusField--info">{this.getStatus()}</p>
         </div>
       </li>
     );

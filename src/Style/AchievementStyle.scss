@@ -1,24 +1,13 @@
+@import 'modifiers';
 @import './_colors.scss';
 
-* {
-  padding: 0;
-  margin: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.container {
-  height: 100%;
-}
-
 @media screen and (max-width:1000px) {
-  .achievementBox {
+  .achievement {
     width: 40%;
     margin: 5%;
     float: left;
 
-    .achievementText {
+    @include element('text') {
       color: $text-gray;
       font-size: 16px;
       text-overflow: ellipsis;
@@ -26,9 +15,9 @@
       overflow: hidden;
     }
 
-    .achievementInfo {
+    @include element('description') {
 
-      .achievementName{
+      @include modifier('name'){
         text-align: left;
         display: inline-block;
         max-width: 63%;
@@ -39,7 +28,7 @@
         overflow: hidden;
       }
 
-      .info{
+      @include modifier('info') {
         text-align: left;
         display: inline-block;
         font-size: 16px;
@@ -48,7 +37,5 @@
         overflow: hidden;
       }
     }
-
-
   }
 }

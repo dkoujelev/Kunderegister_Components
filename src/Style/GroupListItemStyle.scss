@@ -1,19 +1,8 @@
+@import 'modifiers';
 @import './_colors.scss';
 
-* {
-  padding: 0;
-  margin: 0;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-
-.container {
-  height: 100%;
-}
-
-@media screen and (min-width:601px){
-  .listItem {
+@media screen and (min-width:601px) {
+  .list {
     display: grid;
     grid-template-columns:  60% 40%;
     grid-gap: 5px;
@@ -21,10 +10,10 @@
     margin: auto;
     width: 600px;
 
-
-    .groupInfo {
+    @include element('groupInfo') {
       grid-column: 1/2;
-      .groupName {
+
+      @include modifier('name') {
         color: $text-gray;
         font-size: 32px;
         text-overflow: ellipsis;
@@ -32,36 +21,42 @@
         overflow: hidden;
       }
 
-      .progress {
+      @include modifier('progress') {
         color: $text-light-gray;
         font-size: 28px;
         padding: 0;
       }
     }
 
-    .statusField p {
-      zoom: 2;
-    }
-    .statusField {
+    @include element('statusField') {
       grid-column: 2/3;
       margin-top: auto;
       margin-bottom: auto;
       text-align: right;
+
+      @include modifier('info') {
+        zoom: 2;
+      }
     }
+  }
+
+  .wholeList {
+    padding: 0px;
   }
 }
 
 @media screen and (max-width:600px){
-  .listItem {
+  .list {
     display: grid;
     grid-template-columns:  60% 40%;
     grid-gap: 5px;
     grid-auto-rows: minmax(36px, auto);
     margin: 20px;
 
-    .groupInfo {
+    @include element('groupInfo') {
       grid-column: 1/2;
-      .groupName {
+
+      @include modifier('name') {
         color: $text-gray;
         font-size: 16px;
         text-overflow: ellipsis;
@@ -69,18 +64,22 @@
         overflow: hidden;
       }
 
-      .progress {
+      @include  modifier('progress') {
         color: $text-light-gray;
         font-size: 14px;
         padding: 0;
       }
     }
 
-     .statusField {
-       grid-column: 2/3;
-       margin-top: auto;
-       margin-bottom: auto;
-       text-align: right;
+    @include element('statusField') {
+      grid-column: 2/3;
+      margin-top: auto;
+      margin-bottom: auto;
+      text-align: right;
     }
+  }
+
+  .wholeList {
+    padding: 0px;
   }
 }

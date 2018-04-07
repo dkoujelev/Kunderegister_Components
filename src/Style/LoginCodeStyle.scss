@@ -1,13 +1,9 @@
 @import 'modifiers';
 @import './_colors.scss';
 
-body {
-    background-color: $backgroud;
-}
-
 .login-code {
     text-align: center;
-    background: $backgroud;
+    background: $background;
     margin-top: 10%;
 
     @include element('Message') {
@@ -19,10 +15,14 @@ body {
         margin: 10px;
         color: white;
     }
+
+    @include element('input-wrapper') {
+        // some style
+    }
     
     @include element('input') {
         margin: 5px;
-        background: $backgroud;
+        background: $background;
         width: 24px;
         height: 40px;
         text-align: center;
