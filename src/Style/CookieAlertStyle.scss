@@ -1,0 +1,35 @@
+@import 'modifiers';
+@import './_colors.scss';
+
+.cookieAlertBox {
+    background-color: aqua;
+    display: grid;
+    grid-template-columns: 5fr 2fr 1fr;
+    grid-template-areas: 
+        "text accept decline";
+
+    @include modifier('hide') {
+        display: none;
+    }
+
+    @include element('acceptButton') {
+        background-color: green;
+        grid-area: accept;
+        margin: auto;
+    }
+
+    @include element('declineButton') {
+        background-color: red;
+        grid-area: decline;
+        margin: auto;
+    }
+
+    @include element('text') {
+        color: black;
+        grid-area: text;
+    }
+
+    @include element('link') {
+        color: blue;
+    }
+}

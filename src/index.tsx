@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch, Link } from 'react-router-dom';
 import AchievementPage from './Pages/AchievementsPage';
 import GroupListPage from './Pages/GroupListPage';
 import LoginCodePage from './Pages/LoginCodePage';
+import TempCookiePage from './Pages/TempCookiePage';
 
 ReactDOM.render(
   <BrowserRouter>
@@ -13,10 +14,12 @@ ReactDOM.render(
       <Link className="testpage__link" to="/achievement">Achievement</Link>
       <Link className="testpage__link" to="/grouplist">GroupList</Link>
       <Link className="testpage__link" to="/logincode">LoginCode</Link>      
+      <Link className="testpage__link" to="/cookies">Cookies</Link>            
       <Switch>
         <Route exact={true} path="/achievement" component={AchievementPage}/>
         <Route exact={true} path="/grouplist" component={GroupListPage}/>
-        <Route exact={true} path="/logincode" component={LoginCodePage}/>        
+        <Route exact={true} path="/logincode" component={LoginCodePage}/> 
+        <Route exact={true} path="/cookies" component={TempCookiePage}/>                       
       </Switch>
     </div>
   </BrowserRouter>,
