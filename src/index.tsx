@@ -14,7 +14,6 @@ ReactDOM.render(
       <Link className="testpage__link" to="/achievement">Achievement</Link>
       <Link className="testpage__link" to="/grouplist">GroupList</Link>
       <Link className="testpage__link" to="/logincode">LoginCode</Link>      
-      <Link className="testpage__link" to="/cookies">Cookies</Link>  
       <h1>d</h1>  
       <h1>d</h1> 
       <h1>d</h1> 
@@ -38,9 +37,9 @@ ReactDOM.render(
       <Switch>
         <Route exact={true} path="/achievement" component={AchievementPage}/>
         <Route exact={true} path="/grouplist" component={GroupListPage}/>
-        <Route exact={true} path="/logincode" component={LoginCodePage}/> 
-        <Route exact={true} path="/cookies" component={TempCookiePage}/>                       
+        <Route exact={true} path="/logincode" component={LoginCodePage}/>                        
       </Switch>
+      <TempCookiePage />
     </div>
   </BrowserRouter>,
   document.getElementById('root') as HTMLElement

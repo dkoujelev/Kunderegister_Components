@@ -12,7 +12,7 @@ export interface State {
     show: boolean;
 } 
 
-class Achievement extends React.Component<Props, State> {
+class CookieAlert extends React.Component<Props, State> {
     public static defaultProps: Partial<Props> = {
         show: true
     }
@@ -29,8 +29,8 @@ class Achievement extends React.Component<Props, State> {
     let {show} = this.state;
 
     return (
-      <div className={show ? 'cookieAlertBox' : 'cookieAlertBox cookieAlertBox__hide'}>
-        <p className="cookieAlertBox--text">
+      <div className={show ? 'cookieAlertBox' : 'cookieAlertBox cookieAlertBox--hide'}>
+        <p className="cookieAlertBox__text">
             {/* Tekst hentet fra sparebank 1 sin side */}
             BN Bolig bruker informasjonskapsler og analyseverktøy for 
             å analysere det generelle brukermønsteret på våre nettsider. 
@@ -65,4 +65,4 @@ class Achievement extends React.Component<Props, State> {
   }
 }
 
-export default Achievement;
+export default CookieAlert;
