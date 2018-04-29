@@ -12,7 +12,7 @@ export interface State {
     show: boolean;
 } 
 
-class Achievement extends React.Component<Props, State> {
+class CookieAlert extends React.Component<Props, State> {
     public static defaultProps: Partial<Props> = {
         show: true
     }
@@ -65,4 +65,4 @@ class Achievement extends React.Component<Props, State> {
   }
 }
 
-export default Achievement;
+export default CookieAlert;
