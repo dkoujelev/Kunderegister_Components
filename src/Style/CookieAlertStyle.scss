@@ -8,18 +8,13 @@
     right: 0;
     bottom:-75px;
     height: 75px;
-    
-
     background-color: aqua;
     display: grid;
     grid-template-columns: 5fr 2fr 1fr;
     grid-template-areas: 
         "text accept decline";
-    animation: slideIn 3s ease forwards;
-    //animation-name: example;
-    //animation-duration: 2s;
-    //animation-delay: 1s;
-
+    animation: slideIn 0.5s ease forwards;
+    
     @keyframes slideIn {
         0%{}
         100%{transform: translateY(-75px)}
@@ -31,7 +26,12 @@
     }
   
     @include modifier('hide') {
-        animation: slideOut 3s ease forwards;
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom:0px;
+        height: 75px;
+        animation: slideOut 0.5s ease forwards;
     }
 
     @include element('acceptButton') {
