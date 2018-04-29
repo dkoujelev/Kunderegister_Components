@@ -2,12 +2,12 @@
 @import './_colors.scss';
 
 .cookieAlertBox {
-    opacity: 0.75;
+    opacity: 0.85;
     position: fixed;
     left: 0;
     right: 0;
-    bottom:-75px;
-    height: 75px;
+    bottom:-100px;
+    height: 100px;
     background-color: #0075D2;
     display: grid;
     grid-template-columns: 5fr 2fr 1fr;
@@ -17,12 +17,12 @@
     
     @keyframes slideIn {
         0%{}
-        100%{transform: translateY(-75px)}
+        100%{transform: translateY(-100px)}
     }
 
     @keyframes slideOut {
         0%{}
-        100%{transform: translateY(75px)}
+        100%{transform: translateY(100px)}
     }
   
     @include modifier('hide') {
@@ -35,27 +35,32 @@
     }
 
     @include element('acceptButton') {
+        color: white;
         padding: 10px 10px;
         border-radius: 12px;
+        border: transparent;
         background-color: green;
         grid-area: accept;
         margin: auto;
     }
 
     @include element('declineButton') {
+        color: white;
         padding: 10px 10px;
         border-radius: 12px;
+        border: transparent;
         background-color: red;
         grid-area: decline;
         margin: auto;
     }
 
     @include element('text') {
+        padding: 20px;
         color: white;
         grid-area: text;
     }
 
     @include element('link') {
-        color: grey;
+        color: black;
     }
 }
