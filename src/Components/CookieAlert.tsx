@@ -29,7 +29,7 @@ class Achievement extends React.Component<Props, State> {
     let {show} = this.state;
 
     return (
-      <div className={show ? 'cookieAlertBox' : 'cookieAlertBox cookieAlertBox__hide'}>
+      <div className={show ? 'cookieAlertBox' : 'cookieAlertBox cookieAlertBox--hide'}>
         <p className="cookieAlertBox--text">
             {/* Tekst hentet fra sparebank 1 sin side */}
             BN Bolig bruker informasjonskapsler og analyseverktøy for 

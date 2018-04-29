@@ -15,18 +15,23 @@
     grid-template-columns: 5fr 2fr 1fr;
     grid-template-areas: 
         "text accept decline";
-    animation: example 1s ease forwards;
+    animation: inSide 3s ease forwards;
     //animation-name: example;
     //animation-duration: 2s;
     //animation-delay: 1s;
 
-    @keyframes example {
+    @keyframes inSide {
         0%{}
         100%{transform: translateY(-75px)}
     }
+
+    @keyframes outSide {
+        0%{}
+        100%{transform: translateY(75px)}
+    }
   
     @include modifier('hide') {
-        display: none;
+        animation: outSide 3s ease forwards;
     }
 
     @include element('acceptButton') {
