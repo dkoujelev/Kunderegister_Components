@@ -2,12 +2,29 @@
 @import './_colors.scss';
 
 .cookieAlertBox {
+
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom:-75px;
+    height: 75px;
+    
+
     background-color: aqua;
     display: grid;
     grid-template-columns: 5fr 2fr 1fr;
     grid-template-areas: 
         "text accept decline";
+    animation: example 1s ease forwards;
+    //animation-name: example;
+    //animation-duration: 2s;
+    //animation-delay: 1s;
 
+    @keyframes example {
+        0%{}
+        100%{transform: translateY(-75px)}
+    }
+  
     @include modifier('hide') {
         display: none;
     }
