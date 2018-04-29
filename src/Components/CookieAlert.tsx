@@ -30,7 +30,7 @@ class CookieAlert extends React.Component<Props, State> {
 
     return (
       <div className={show ? 'cookieAlertBox' : 'cookieAlertBox cookieAlertBox--hide'}>
-        <p className="cookieAlertBox--text">
+        <p className="cookieAlertBox__text">
             {/* Tekst hentet fra sparebank 1 sin side */}
             BN Bolig bruker informasjonskapsler og analyseverktøy for 
             å analysere det generelle brukermønsteret på våre nettsider. 

@@ -2,13 +2,13 @@
 @import './_colors.scss';
 
 .cookieAlertBox {
-
+    opacity: 0.75;
     position: fixed;
     left: 0;
     right: 0;
     bottom:-75px;
     height: 75px;
-    background-color: aqua;
+    background-color: #0075D2;
     display: grid;
     grid-template-columns: 5fr 2fr 1fr;
     grid-template-areas: 
@@ -35,23 +35,27 @@
     }
 
     @include element('acceptButton') {
+        padding: 10px 10px;
+        border-radius: 12px;
         background-color: green;
         grid-area: accept;
         margin: auto;
     }
 
     @include element('declineButton') {
+        padding: 10px 10px;
+        border-radius: 12px;
         background-color: red;
         grid-area: decline;
         margin: auto;
     }
 
     @include element('text') {
-        color: black;
+        color: white;
         grid-area: text;
     }
 
     @include element('link') {
-        color: blue;
+        color: grey;
     }
 }
