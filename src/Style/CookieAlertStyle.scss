@@ -1,66 +1,267 @@
 @import 'modifiers';
 @import './_colors.scss';
 
-.cookieAlertBox {
-    opacity: 0.85;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom:-100px;
-    height: 100px;
-    background-color: #0075D2;
-    display: grid;
-    grid-template-columns: 5fr 2fr 1fr;
-    grid-template-areas: 
-        "text accept decline";
-    animation: slideIn 0.5s ease forwards;
-    
-    @keyframes slideIn {
-        0%{}
-        100%{transform: translateY(-100px)}
-    }
-
-    @keyframes slideOut {
-        0%{}
-        100%{transform: translateY(100px)}
-    }
-  
-    @include modifier('hide') {
+@media screen and (min-width:1401px) and (max-width:1920px) {
+    .cookieAlertBox {
+        opacity: 0.85;
         position: fixed;
-        left: 0;
-        right: 0;
-        bottom:0px;
-        height: 75px;
-        animation: slideOut 0.5s ease forwards;
-    }
+        bottom:-10vw;
+        height: 10vw;
+        background-color: #0075D2;
+        display: grid;
+        grid-template-columns: 5fr 2fr 2fr;
+        grid-template-areas: 
+            "text accept decline";
+        animation: slideIn 0.5s ease forwards;
+        
+        @keyframes slideIn {
+            0%{}
+            100%{transform: translateY(-10vw)}
+        }
 
-    @include element('acceptButton') {
-        color: white;
-        padding: 10px 10px;
-        border-radius: 12px;
-        border: transparent;
-        background-color: green;
-        grid-area: accept;
-        margin: auto;
-    }
+        @keyframes slideOut {
+            0%{}
+            100%{transform: translateY(10vw)}
+        }
+    
+        @include modifier('hide') {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom:0px;
+            height: 10vw;
+            animation: slideOut 0.5s ease forwards;
+        }
 
-    @include element('declineButton') {
-        color: white;
-        padding: 10px 10px;
-        border-radius: 12px;
-        border: transparent;
-        background-color: red;
-        grid-area: decline;
-        margin: auto;
-    }
+        @include element('acceptButton') {
+            color: white;
+            padding: 10px 10px;
+            border-radius: 12px;
+            border: transparent;
+            background-color: green;
+            grid-area: accept;
+            margin: auto;
+        }
 
-    @include element('text') {
-        padding: 20px;
-        color: white;
-        grid-area: text;
-    }
+        @include element('declineButton') {
+            color: white;
+            padding: 10px 10px;
+            border-radius: 12px;
+            border: transparent;
+            background-color: red;
+            grid-area: decline;
+            margin: auto;
+        }
 
-    @include element('link') {
-        color: black;
+        @include element('text') {
+            padding: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            color: white;
+            grid-area: text;
+        }
+
+        @include element('link') {
+            color: black;
+        }
+    }
+}
+
+@media screen and (min-width:802px) and (max-width:1400px) {
+    .cookieAlertBox {
+        opacity: 0.85;
+        position: fixed;
+        bottom:-20vw;
+        height: 20vw;
+        background-color: #0075D2;
+        display: grid;
+        grid-template-columns: 5fr 2fr 2fr;
+        grid-template-areas: 
+            "text accept decline";
+        animation: slideIn 0.5s ease forwards;
+        
+        @keyframes slideIn {
+            0%{}
+            100%{transform: translateY(-20vw)}
+        }
+
+        @keyframes slideOut {
+            0%{}
+            100%{transform: translateY(20vw)}
+        }
+    
+        @include modifier('hide') {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom:0px;
+            height: 20vw;
+            animation: slideOut 0.5s ease forwards;
+        }
+
+        @include element('acceptButton') {
+            color: white;
+            padding: 10px 10px;
+            border-radius: 12px;
+            border: transparent;
+            background-color: green;
+            grid-area: accept;
+            margin: auto;
+        }
+
+        @include element('declineButton') {
+            color: white;
+            padding: 10px 10px;
+            border-radius: 12px;
+            border: transparent;
+            background-color: red;
+            grid-area: decline;
+            margin: auto;
+        }
+
+        @include element('text') {
+            padding: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            color: white;
+            grid-area: text;
+        }
+
+        @include element('link') {
+            color: black;
+        }
+    }
+}
+
+@media screen and (min-width:501px) and (max-width:801px) {
+    .cookieAlertBox {
+        opacity: 0.85;
+        position: fixed;
+        bottom:-40vw;
+        height: 40vw;
+        background-color: #0075D2;
+        display: grid;
+        grid-template-columns: 5fr 2fr 2fr;
+        grid-template-areas: 
+            "text accept decline";
+        animation: slideIn 0.5s ease forwards;
+        
+        @keyframes slideIn {
+            0%{}
+            100%{transform: translateY(-40vw)}
+        }
+
+        @keyframes slideOut {
+            0%{}
+            100%{transform: translateY(40vw)}
+        }
+    
+        @include modifier('hide') {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom:0px;
+            height: 40vw;
+            animation: slideOut 0.5s ease forwards;
+        }
+
+        @include element('acceptButton') {
+            color: white;
+            padding: 10px 10px;
+            border-radius: 12px;
+            border: transparent;
+            background-color: green;
+            grid-area: accept;
+            margin: auto;
+        }
+
+        @include element('declineButton') {
+            color: white;
+            padding: 10px 10px;
+            border-radius: 12px;
+            border: transparent;
+            background-color: red;
+            grid-area: decline;
+            margin: auto;
+        }
+
+        @include element('text') {
+            padding: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            color: white;
+            grid-area: text;
+        }
+
+        @include element('link') {
+            color: black;
+        }
+    }
+}
+
+@media screen and (min-width:300px) and (max-width: 500px){
+    .cookieAlertBox {
+        opacity: 0.85;
+        position: fixed;
+        bottom:-90vw;
+        height: 90vw;
+        background-color: #0075D2;
+        display: grid;
+        grid-template-columns: 5fr 5fr;
+        grid-template-areas: 
+            "text text"
+            "accept decline";
+        animation: slideIn 0.5s ease forwards;
+        
+        @keyframes slideIn {
+            0%{}
+            100%{transform: translateY(-90vw)}
+        }
+
+        @keyframes slideOut {
+            0%{}
+            100%{transform: translateY(90vw)}
+        }
+    
+        @include modifier('hide') {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom:0px;
+            height: 90vw;
+            animation: slideOut 0.5s ease forwards;
+        }
+
+        @include element('acceptButton') {
+            color: white;
+            padding: 10px 10px;
+            border-radius: 12px;
+            border: transparent;
+            background-color: green;
+            grid-area: accept;
+            margin: auto;
+        }
+
+        @include element('declineButton') {
+            color: white;
+            padding: 10px 10px;
+            border-radius: 12px;
+            border: transparent;
+            background-color: red;
+            grid-area: decline;
+            margin: auto;
+        }
+
+        @include element('text') {
+            padding: 10px;
+            margin-top: auto;
+            margin-bottom: auto;
+            color: white;
+            grid-area: text;
+        }
+
+        @include element('link') {
+            color: black;
+        }
     }
 }
