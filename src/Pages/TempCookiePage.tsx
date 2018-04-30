@@ -5,7 +5,11 @@ export default class TempCookiePage extends React.Component {
     render() {
         return(
             <div>
-                <CookieAlert onAccept={() => { alert('Accepted'); }} onDecline={() => { alert('Declined'); }}/>
+                <CookieAlert 
+                    show={false} 
+                    onAccept={() => { alert('Accepted'); }} 
+                    onDecline={() => { alert('Declined'); }}
+                />
             </div>
         );
     }
